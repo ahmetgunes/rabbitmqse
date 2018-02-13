@@ -1,0 +1,21 @@
+{
+  "name": "ahmetgunes/rabbitmqse",
+  "description": "RabbitMQ Managers for ScheduledEvent",
+  "type": "library",
+  "license": "Apache 2.0",
+  "authors": [
+    {
+      "name": "Ahmet Güneş",
+      "email": "ahmetgunes@mail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "RabbitMQEvent\\": "src/"
+    }
+  },
+  "require": {
+    "php-amqplib/php-amqplib": "^2.7",
+    "ahmetgunes/scheduledevent": "^0.1.0"
+  }
+}
