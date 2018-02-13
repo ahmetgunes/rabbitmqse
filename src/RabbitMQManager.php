@@ -85,7 +85,7 @@ class RabbitMQManager implements QueueManagerInterface
         if (!$message instanceof RabbitMQMessage) {
             throw new ScheduledEventException('Wrong formatted message is passed to the manager.');
         }
-        $convertedMessage = $message->convert();
+        $convertedMessage = RabbitMQMessageSerializer::convert($message);
         if ($convertedMessage instanceof AMQPMessage) {
             $this->mq->channel($this->channelId)->basic_publish($convertedMessage, '', $this->queue);
 
@@ -101,7 +101,7 @@ class RabbitMQManager implements QueueManagerInterface
         $router = $this->router;
 
         $callback = function (AMQPMessage $message) use ($router) {
-            $message = RabbitMQMessage::deConvert($message);
+            $message = RabbitMQMessageSerializer::deConvert($message);
             if (!is_null($message->getDesignatedDate()) && $message->getDesignatedDate() > time()) {
                 $this->publish($message);
             } else {

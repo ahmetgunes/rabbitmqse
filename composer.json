@@ -16,6 +16,6 @@
   },
   "require": {
     "php-amqplib/php-amqplib": "^2.7",
-    "ahmetgunes/scheduledevent": "^0.1.0"
+    "ahmetgunes/scheduledevent": "^0.2.2"
   }
 }
